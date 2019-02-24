@@ -25,4 +25,14 @@ public class MailBO {
         MailPO smail = inbox.clickSent();
         smail.clickDelete();
     }
+
+    public boolean isMailSent() {
+        InboxMailsPO inbox = new InboxMailsPO(driver);
+        return inbox.isMailSent();
+    }
+
+    public boolean isMailDeleted() {
+        MailPO mail = new MailPO(driver);
+        return  mail.isMailDeleted();
+    }
 }

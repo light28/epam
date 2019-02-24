@@ -1,16 +1,16 @@
 package Parser;
 
+import Model.User;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.util.ArrayList;
-
-import Model.*;
 
 
 public class XMLParser {
@@ -52,6 +52,5 @@ public class XMLParser {
         }
         return users_info;
     }
-
 
 }

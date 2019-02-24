@@ -1,9 +1,10 @@
 package PageObjects;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.logging.Logger;
@@ -34,5 +35,26 @@ public class InboxMailsPO {
         logger.info("click view message");
         sentMailBtn.click();
         return new MailPO(driver);
+    }
+
+    public boolean isInboxPage() {
+        try {
+            WebElement element = driver.findElement(By.xpath("//div[@class = 'T-I J-J5-Ji T-I-KE L3']"));
+            return true;
+        }
+        catch (NoSuchElementException ex) {
+            return  false;
+        }
+
+    }
+
+    public boolean isMailSent() {
+        try {
+            WebElement sentMail = driver.findElement(By.xpath("//*[@id=\"link_vsm\"]"));
+            return true;
+        }
+        catch (NoSuchElementException ex) {
+            return false;
+        }
     }
 }

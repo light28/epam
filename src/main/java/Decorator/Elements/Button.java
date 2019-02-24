@@ -1,7 +1,12 @@
 package Decorator.Elements;
-import Decorator.*;
-import org.openqa.selenium.*;
 
+import Decorator.Element;
+import org.openqa.selenium.*;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.Point;
+import org.openqa.selenium.Rectangle;
+
+import java.awt.*;
 import java.util.List;
 
 

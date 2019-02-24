@@ -1,6 +1,7 @@
 package BusinessLogic;
 
 import PageObjects.GmailMainPO;
+import PageObjects.InboxMailsPO;
 import PageObjects.LoginPagePO;
 import PageObjects.PasswordPagePO;
 import org.openqa.selenium.WebDriver;
@@ -19,5 +20,10 @@ public class LoginBO {
         PasswordPagePO password = login.sendLogin();
         password.writePassword(userPassword);
         password.sendPassword();
+    }
+
+    public boolean isUserLogin() {
+        InboxMailsPO inbox = new InboxMailsPO(driver);
+        return inbox.isInboxPage();
     }
 }

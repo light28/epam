@@ -5,10 +5,12 @@ import Model.Mail;
 import Model.User;
 import Parser.XMLParser;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
 import java.util.ArrayList;
+
+import static org.junit.Assert.assertTrue;
 
 public class GmailTest {
 
@@ -22,9 +24,11 @@ public class GmailTest {
         Mail mail = new Mail("vasua.vasua1999@gmail.com", "selenium", "-_-");
 
         loginObj.login(user.login, user.password);
+        assertTrue(loginObj.isUserLogin());
         mailBO.sendMail(mail);
+        assertTrue(mailBO.isMailSent());
         mailBO.deleteMail();
-
+        assertTrue(mailBO.isMailDeleted());
     }
 
     @DataProvider(name = "user_data", parallel  = true)

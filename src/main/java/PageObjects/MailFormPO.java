@@ -1,10 +1,10 @@
 package PageObjects;
 
+import Model.Mail;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import Model.Mail;
 
 import java.util.logging.Logger;
 
@@ -25,7 +25,7 @@ public class MailFormPO {
     @FindBy(xpath = "//div[@class='J-J5-Ji btA']//div[@role='button']")
     private WebElement sendBtn;
 
-    MailFormPO(WebDriver driver) {
+    public MailFormPO(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
@@ -54,4 +54,5 @@ public class MailFormPO {
     public void clickSend() {
         sendBtn.click();
     }
+
 }

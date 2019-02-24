@@ -1,5 +1,7 @@
 package PageObjects;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -23,5 +25,14 @@ public class MailPO {
     public void clickDelete() {
         logger.info("click delete message button");
         deletebtn.click();
+    }
+
+    public boolean isMailDeleted() {
+        try {
+            WebElement undo = drivar.findElement(By.xpath("//*[@id=\"link_undo\"]"));
+            return true;
+        } catch (NoSuchElementException ex) {
+            return false;
+        }
     }
 }

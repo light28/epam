@@ -1,6 +1,6 @@
 package Decorator.Elements;
 
-import Decorator.*;
+import Decorator.Element;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;

@@ -1,0 +1,68 @@
+import java.nio.file.Paths
+
+plugins {
+    id 'java'
+}
+
+group 'epam'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+
+    /* Selenium */
+    compile "org.seleniumhq.selenium:selenium-java:3.8.1"
+    
+    /*testng*/
+    compile "org.testng:testng:6.3.1"
+    compile("org.uncommons:reportng:1.1.2") {
+        exclude group: "org.testng", module: "testng"
+    }
+}
+
+task singlThreadTest(type: Test) {
+    useTestNG() {
+        suites 'src\\test\\java\\singleThread.xml'
+    }
+}
+
+/*task generateXml << {
+    def threadNum = System.getProperty("threadCount", "2")
+
+    def text = file(Paths.get('src/test/resources', "multiThread.xml"))
+            .text
+            .replace('${thread.count}', threadNum)
+
+    def file = file(Paths.get('src/test/resources', "multiThreadReady.xml"))
+    file.text = text
+
+    print("Use " + file.text)
+}
+
+task multiThreadTest(type: Test, dependsOn: generateXml) {
+    useTestNG() {
+        suites 'src/test/resources/multiThreadReady.xml'
+    }
+}
+*/
+
+
+
+
+task MultiThreadTest(type: Test){
+    def threadNum = System.getProperty("threadCount", "2")
+
+    def text = file(Paths.get('src/test/resources', "multiThread.xml")).text.replace('${thread.count}', threadNum)
+    def file = file(Paths.get('src/test/resources', "multiThread.xml")).text = text
+    
+    useTestNG() {
+        suites("src\\test\\resources\\multiThread.xml")
+        parallel = "methods"
+    }
+}
